@@ -7,7 +7,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 # Install packages
 RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-pdo_mysql php7-json php7-openssl php7-curl php7-pdo \
     php7-zlib php7-xml php7-phar php7-intl php7-dom php7-xmlreader php7-ctype php7-session \
-    php7-mbstring php7-gd php7-tokenizer php7-bcmath php7-fileinfo nginx supervisor curl
+    php7-mbstring php7-gd php7-tokenizer php7-bcmath php7-fileinfo php7-iconv nginx supervisor curl
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
@@ -24,6 +24,7 @@ RUN chown -R nobody.nobody /run && \
   chown -R nobody.nobody /var/lib/nginx && \
   chown -R nobody.nobody /var/tmp/nginx && \
   chown -R nobody.nobody /var/log/nginx
+  mkdir /tmp/session && chmod -R 777 /tmp/session
 
 # Setup document root
 RUN mkdir -p /var/www/html
