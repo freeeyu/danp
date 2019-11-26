@@ -31,12 +31,15 @@ RUN mkdir -p /var/www/html
 # Make the document root a volume
 VOLUME /var/www/html
 
-# Switch to use a non-root user from here on
-USER nobody
-
 # Add application
 WORKDIR /var/www/html
-COPY --chown=nobody src/ /var/www/html/
+#COPY --chown=nobody src/ /var/www/html/
+#fixed Unknown flag: chown error
+RUN chown -R nobody.nobody /var/www/html/
+COPY src/ /var/www/html/
+
+# Switch to use a non-root user from here on
+USER nobody
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
