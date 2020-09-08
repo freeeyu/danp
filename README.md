@@ -10,5 +10,8 @@ docker+alpine+nginx+php轻量化php环境镜像,增加了alpine的阿里云源,�
 
 4. 将代码放入目录/wwwroot/mybase
 
+### 更新镜像
+docker pull freeeyu/dnmp:v1
+
 ### 其他注意事项
 查看原作者:[https://github.com/TrafeX/docker-php-nginx](https://github.com/TrafeX/docker-php-nginx)
